@@ -10,7 +10,8 @@ type FormValues = {
   social: {
     twitter: string;
     facebook: string;
-  }
+  };
+  phoneNumbers: string[]
 };
 
 export const YouTubeForm = () => {
@@ -28,6 +29,7 @@ export const YouTubeForm = () => {
           twitter: "",
           facebook: "",
         },
+        phoneNumbers: ["", ""],
       };
     },
   });
@@ -114,6 +116,24 @@ export const YouTubeForm = () => {
             type="text"
             id="facebook"
             {...register("social.facebook")}
+          />
+        </div>
+
+        <div className="form-control">
+          <label htmlFor="primary-phone">Primary phone number</label>
+          <input
+            type="text"
+            id="primary-phone"
+            {...register("phoneNumbers.0")}
+          />
+        </div>
+
+        <div className="form-control">
+          <label htmlFor="secondary-phone">Secondary phone number</label>
+          <input
+            type="text"
+            id="secondary-phone"
+            {...register("phoneNumbers.1")}
           />
         </div>
 
