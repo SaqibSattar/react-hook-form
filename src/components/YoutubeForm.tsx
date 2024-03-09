@@ -43,9 +43,9 @@ export const YouTubeForm = () => {
     },
   });
   const { register, control, handleSubmit, formState, watch, getValues, setValue } = form;
-  const { errors, touchedFields, dirtyFields, isDirty } = formState;
+  const { errors, touchedFields, dirtyFields, isDirty, isValid } = formState;
 
-  console.log({ errors, isDirty, touchedFields, dirtyFields });
+  console.log({ errors, isDirty, touchedFields, dirtyFields, isValid });
   
   const { fields, append, remove } = useFieldArray({
     control,
@@ -233,7 +233,7 @@ export const YouTubeForm = () => {
         <button type="button" onClick={handleSetValue}>
           Set value
         </button>
-        <button>Submit</button>
+        <button disabled={!isDirty || !isValid}>Submit</button>
       </form>
       <DevTool control={control} />
     </div>
