@@ -41,6 +41,7 @@ export const YouTubeForm = () => {
         dob: new Date(),
       };
     },
+    mode: "onTouched",
   });
   const { register, control, handleSubmit, formState, watch, getValues, setValue, reset } = form;
   const { errors, touchedFields, dirtyFields, isDirty, isValid, isSubmitting, isSubmitted, isSubmitSuccessful, submitCount, } = formState;
