@@ -42,7 +42,7 @@ export const YouTubeForm = () => {
       };
     },
   });
-  const { register, control, handleSubmit, formState, watch, getValues, setValue } = form;
+  const { register, control, handleSubmit, formState, watch, getValues, setValue, reset } = form;
   const { errors, touchedFields, dirtyFields, isDirty, isValid, isSubmitting, isSubmitted, isSubmitSuccessful, submitCount, } = formState;
 
   console.log({ errors, isDirty, touchedFields, dirtyFields, isValid });
@@ -61,6 +61,10 @@ export const YouTubeForm = () => {
     console.log("Form errors", errors);
   };
 
+  const onReset = () => {
+    reset();
+  };
+
   const handleGetValues = () => {
     console.log("Get values", getValues());
     // console.log("Get values", getValues("username"));
@@ -74,6 +78,12 @@ export const YouTubeForm = () => {
     });
   };
 
+  useEffect(() => {
+    if (isSubmitSuccessful) {
+      reset();
+    }
+  }, [isSubmitSuccessful, reset]);
+  
 //   const watchUsername = watch();
 //   useEffect(() => {
 //     const subscription = watch((value, { name, type }) =>
@@ -233,6 +243,9 @@ export const YouTubeForm = () => {
         </button>
         <button type="button" onClick={handleSetValue}>
           Set value
+        </button>
+        <button type="button" onClick={onReset}>
+          Reset
         </button>
         <button disabled={!isDirty || !isValid || isSubmitting}>Submit</button>
       </form>
